@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import LayoutAdminComponent from './modulos/administrativo/layout-admin/layout-admin.component';
 
 export const routes: Routes = [
 
