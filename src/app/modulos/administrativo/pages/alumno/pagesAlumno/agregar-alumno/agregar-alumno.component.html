@@ -1,65 +1,41 @@
-<section class="content">
-  <div class="row">
-    <div class="col-md-6 mt-4 align-items-center">
-      <div class="form-group">
-        <label for="contraseña" class="ml-3">Año que cursa</label>
-        <select id="añocurso" name="añocurso" class="form-control ml-3" style="max-width: 400px" required>
-          <option value="" disabled selected>Selecciona un año</option>
-          <option value="1">1er Año</option>
-          <option value="2">2do Año</option>
-          <option value="3">3er Año</option>
-          <option value="4">4to Año</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="nombre" class="ml-3">Nombre</label>
-        <input type="text" id="nombre" name="nombre" class="form-control ml-3" style="max-width: 400px"
-          placeholder="Agregar nombre/s" required="required">
-      </div>
-      <div class="form-group">
-        <label for="apellido" class="ml-3">Apellido</label>
-        <input type="text" id="apellido" name="apellido" class="form-control ml-3" style="max-width: 400px"
-          placeholder="Agregar apellido">
-      </div>
-      <div class="form-group">
-        <label for="dni" class="ml-3">DNI</label>
-        <input type="text" id="dni" name="dni" class="form-control ml-3" style="max-width: 400px"
-          placeholder="Agregar DNI">
-      </div>
-    </div>
 
-    <div class="col-md-6 mt-4">
-      <div class="form-group">
-        <label for="email">Correo Electrónico</label>
-        <input type="email" id="email" name="email" class="form-control" style="max-width: 400px"
-          placeholder="ejemplo@gmail.com">
-      </div>
-      <div class="form-group">
-        <label for="telefono">Teléfono</label>
-        <input type="text" id="telefono" name="telefono" class="form-control" style="max-width: 400px"
-          placeholder="3446-445566">
-      </div>
-      <div class="form-group">
-        <label for="">Usuario</label>
-            <input type=" text" id="usuario" name="usuario" class="form-control" style="max-width: 400px"
-          placeholder="Ingrese un usuario aleatorio">
-      </div>
-      <div class="form-group">
-        <label for="contraseña">Contraseña</label>
-        <input type="text" id="contraseña" name="contraseña" class="form-control" style="max-width: 400px"
-          placeholder="Ingrese contraseña aleatoria">
-      </div>
+<!-- /.content -->
+<form class="row sm-4">
+  <div class="col-md-6">
+    <label for="validationDefault01" class="form-label">First name</label>
+    <input type="text" class="form-control" id="validationDefault01" value="Mark" required>
+  </div>
+  <div class="col-md-6">
+    <label for="validationDefault02" class="form-label">Last name</label>
+    <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+  </div>
+  <div class="col-md-6">
+    <label for="validationDefaultUsername" class="form-label">Username</label>
+    <div class="input-group">
+      <span class="input-group-text" id="inputGroupPrepend2">&#64;</span>
+      <input type="text" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required>
     </div>
   </div>
+  <div class="col-md-6">
+    <label for="validationDefault03" class="form-label">City</label>
+    <input type="text" class="form-control" id="validationDefault03" required>
+  </div>
+  <div class="col-md-6">
+    <label for="validationDefault04" class="form-label">State</label>
+    <select class="form-select" id="validationDefault04" required>
+      <option selected disabled value="">Choose...</option>
+      <option>...</option>
+    </select>
+  </div>
+  <div class="col-md-6">
+    <label for="validationDefault05" class="form-label">Zip</label>
+    <input type="text" class="form-control" id="validationDefault05" required>
+  </div>
 
-  <button type="submit" class="btn btn-primary ml-3 mt-2"
-    style="background-color: #951F32; color: white; border-color: #951F32;">
-    Crear Alumno
-  </button>
-
-</section>
-<!-- /.content -->
-
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">Submit form</button>
+  </div>
+</form>
 <!-- /.content-wrapper -->
 
 <!-- Control Sidebar -->

@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './agregar-alumno.component.html',
   styleUrl: './agregar-alumno.component.css'
 })
-export class AgregarAlumnoComponent {
+export default class AgregarAlumnoComponent {
 
 }
