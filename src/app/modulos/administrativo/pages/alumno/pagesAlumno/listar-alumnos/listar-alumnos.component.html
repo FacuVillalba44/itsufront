@@ -12,25 +12,24 @@
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
             <th scope="col">N°DNI</th>
-            <th scope="col">Nacimiento</th>
             <th scope="col">Domicilio</th>
-            <th scope="col">Telefono</th>
+            <th scope="col">Teléfono</th>
             <th scope="col">E-mail</th>
-            <th scope="col">Carrera</th>
+            <th scope="col">Rol</th>
            
           </tr>
         </thead>
         <tbody>
          <!--Genera de manera dinámica los datos de la tabla de alumnos-->
-          <tr *ngFor="let alumno of alumnos"> <!--renglon de registro-->
-            <td>{{alumno.nombreAlumno}}</td>
-            <td>{{alumno.apellidoAlumno}}</td>
-            <td>{{alumno.dniAlumno}}</td>
-            <td>{{alumno.nacimientoAlumno}}</td>
-            <td>{{alumno.domicilioAlumno}}</td>
-            <td>{{alumno.telefonoAlumno}}</td>
-            <td>{{alumno.emailAlumno}}</td>
-            <td>{{alumno.idCarreraInscripto}}</td>
+          <tr *ngFor="let usuario of usuarios"> <!--renglon de registro-->
+            <td>{{usuario.nombreUsuario}}</td>
+            <td>{{usuario.apellidoUsuario}}</td>
+            <td>{{usuario.dniUsuario}}</td>
+            <td>{{usuario.domicilioUsuario}}</td>
+            <td>{{usuario.telefonoUsuario}}</td>
+            <td>{{usuario.emailUsuario}}</td>
+            <td>{{usuario.idRol}}</td>
+            
           </tr>
           
         </tbody>
