@@ -1,12 +1,12 @@
-export class Usuario {
+export class Alumno {
     //modelo de datos que recibe desde el back
-    idAlumno: number;
+    idUsuario: number;
     nombreUsuario: string;
     apellidoUsuario: string;
-    dniUsuario: string;
+    dniUsuario: number;
     domicilioUsuario: string;
+    telefonoUsuario: number;
     emailUsuario: string;
     idRol: number;
     claveAcceso: string;
-    telefonoUsuario: string;
 }

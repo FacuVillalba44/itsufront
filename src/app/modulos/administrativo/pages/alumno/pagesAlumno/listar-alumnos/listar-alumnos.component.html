@@ -15,21 +15,21 @@
             <th scope="col">Domicilio</th>
             <th scope="col">Teléfono</th>
             <th scope="col">E-mail</th>
-            <th scope="col">Rol</th>
+            <th scope="col">id-rol</th>
+            
            
           </tr>
         </thead>
         <tbody>
          <!--Genera de manera dinámica los datos de la tabla de alumnos-->
-          <tr *ngFor="let usuario of usuarios"> <!--renglon de registro-->
-            <td>{{usuario.nombreUsuario}}</td>
-            <td>{{usuario.apellidoUsuario}}</td>
-            <td>{{usuario.dniUsuario}}</td>
-            <td>{{usuario.domicilioUsuario}}</td>
-            <td>{{usuario.telefonoUsuario}}</td>
-            <td>{{usuario.emailUsuario}}</td>
-            <td>{{usuario.idRol}}</td>
-            
+          <tr *ngFor="let alumno of alumnos"> <!--renglon de registro-->
+            <td>{{alumno.nombreUsuario}}</td>
+            <td>{{alumno.apellidoUsuario}}</td>
+            <td>{{alumno.dniUsuario}}</td>
+            <td>{{alumno.domicilioUsuario}}</td>
+            <td>{{alumno.telefonoUsuario}}</td>
+            <td>{{alumno.emailUsuario}}</td>
+            <td>{{alumno.idRol}}</td>
           </tr>
           
         </tbody>
