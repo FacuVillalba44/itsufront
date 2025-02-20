@@ -8,7 +8,7 @@ import { Alumno } from '../modelos/alumno';
 })
 //esta parte nos permite conectarnosÑ con el back a través de http
 export class AlumnosService {
-  private urlBase ="https://8080-idx-itsubackend-1737470901504.cluster-ve345ymguzcd6qqzuko2qbxtfe.cloudworkstations.dev/itsuapi/alumnos";
+  private urlBase ="https://8080-idx-backenditsu-1740021031173.cluster-kc2r6y3mtba5mswcmol45orivs.cloudworkstations.dev/itsuapi/usuarios";
   constructor(private clienteHttp: HttpClient) { }
 
   //este método nos permite listar los alumnos a traves de una petición get
