@@ -1,4 +1,4 @@
-export class Alumno {
+export class Usuario {
     //modelo de datos que recibe desde el back
     idUsuario: number;
     nombreUsuario: string;

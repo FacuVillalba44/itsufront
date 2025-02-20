@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Alumno } from '../modelos/usuario';
+import { Usuario } from '../modelos/usuario';
 
 @Injectable({
   providedIn: 'root'
 })
 //esta parte nos permite conectarnosÑ con el back a través de http
-export class AlumnosService {
+export class UsuarioService {
   private urlBase ="https://8080-idx-backenditsu-1740021031173.cluster-kc2r6y3mtba5mswcmol45orivs.cloudworkstations.dev/itsuapi/usuarios";
   constructor(private clienteHttp: HttpClient) { }
 
