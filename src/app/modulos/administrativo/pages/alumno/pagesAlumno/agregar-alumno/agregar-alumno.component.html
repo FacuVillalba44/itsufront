@@ -1,45 +1,70 @@
+<div class="card card-primary">
+  <div class="card-header">
+    <h3 class="card-title">Registro de Alumno</h3>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="formAlumno" (ngSubmit)="registrarAlumno()">
+      <div class="row">
+        <!-- Primera columna -->
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label>Nombre/s</label>
+            <input type="text" class="form-control" formControlName="nombreUsuario" placeholder="Ingrese el/los nombres">
+            <small class="text-danger" *ngIf="campoInvalido('nombreUsuario')">
+              Nombre es obligatorio y debe tener al menos 3 caracteres.
+            </small>
+          </div>
 
-<!-- /.content -->
-<form class="row sm-4">
-  <div class="col-md-6">
-    <label for="validationDefault01" class="form-label">First name</label>
-    <input type="text" class="form-control" id="validationDefault01" value="Mark" required>
-  </div>
-  <div class="col-md-6">
-    <label for="validationDefault02" class="form-label">Last name</label>
-    <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
-  </div>
-  <div class="col-md-6">
-    <label for="validationDefaultUsername" class="form-label">Username</label>
-    <div class="input-group">
-      <span class="input-group-text" id="inputGroupPrepend2">&#64;</span>
-      <input type="text" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <label for="validationDefault03" class="form-label">City</label>
-    <input type="text" class="form-control" id="validationDefault03" required>
-  </div>
-  <div class="col-md-6">
-    <label for="validationDefault04" class="form-label">State</label>
-    <select class="form-select" id="validationDefault04" required>
-      <option selected disabled value="">Choose...</option>
-      <option>...</option>
-    </select>
-  </div>
-  <div class="col-md-6">
-    <label for="validationDefault05" class="form-label">Zip</label>
-    <input type="text" class="form-control" id="validationDefault05" required>
-  </div>
+          <div class="form-group">
+            <label>Apellido/s</label>
+            <input type="text" class="form-control" formControlName="apellidoUsuario" placeholder="Ingrese el/los apellidos">
+            <small class="text-danger" *ngIf="campoInvalido('apellidoUsuario')">
+              Apellido es obligatorio y debe tener al menos 3 caracteres.
+            </small>
+          </div>
 
-  <div class="col-12">
-    <button class="btn btn-primary" type="submit">Submit form</button>
-  </div>
-</form>
-<!-- /.content-wrapper -->
+          <div class="form-group">
+            <label>Número de DNI</label>
+            <input type="text" class="form-control" formControlName="dniUsuario" placeholder="Ingrese el número de DNI">
+            <small class="text-danger" *ngIf="campoInvalido('dniUsuario')">
+              Debe ingresar un DNI válido de 8 dígitos sin puntos ni guiones.
+            </small>
+          </div>
+        </div>
 
-<!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
-  <!-- Control sidebar content goes here -->
-</aside>
-<!-- /.control-sidebar -->
+        <!-- Segunda columna -->
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label>Domicilio</label>
+            <input type="text" class="form-control" formControlName="domicilioUsuario" placeholder="Ingrese el domicilio">
+            <small class="text-danger" *ngIf="campoInvalido('domicilioUsuario')">
+              Domicilio es obligatorio.
+            </small>
+          </div>
+
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="text" class="form-control" formControlName="telefonoUsuario" placeholder="+54 3446 1234">
+            <small class="text-danger" *ngIf="campoInvalido('telefonoUsuario')">
+              Debe ingresar un número válido con formato +54 XXXX XXXX.
+            </small>
+          </div>
+
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" formControlName="emailUsuario" placeholder="Email">
+            <small class="text-danger" *ngIf="campoInvalido('emailUsuario')">
+              Ingrese un email válido.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary" [disabled]="formAlumno.invalid">
+          Registrar Alumno
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
