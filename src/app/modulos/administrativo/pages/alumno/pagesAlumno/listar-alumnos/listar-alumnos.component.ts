@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Alumno } from '../../../../modelos/usuario';
-import { UsuarioService } from '../../../../services-administrativo/usuarios.service';
+import { UsuariosService } from '../../../../services-administrativo/usuarios.service';
 import { CommonModule } from '@angular/common';
 
 
@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 export default class ListarAlumnosComponent {
   [x: string]: any;
   alumnos: Alumno[];
-  constructor(private usuarioServicio: UsuarioService) { }
+  constructor(private usuariosServicio: UsuariosService) { }
 
   ngOnInit() {
     //cargamos los datos
@@ -22,7 +22,7 @@ export default class ListarAlumnosComponent {
   }
   private obtenerAlumnos() {
     //aqui consumimos los datos del observable (se suscribe al servicio de listar)
-    this.usuarioServicio.listarAlumnos().subscribe(
+    this.usuariosServicio.listarAlumnos().subscribe(
       alumnos => {
         this.alumnos = alumnos
       }

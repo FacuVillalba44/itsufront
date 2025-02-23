@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import * as bcrypt from 'bcryptjs';
+import { UsuariosService } from '../../../../../administrativo/services-administrativo/usuarios.service';
+import { Carrera } from '../../../../modelos/carrera';
+import { Alumno } from '../../../../modelos/usuario';
 
 @Component({
   selector: 'app-agregar-alumno',
@@ -11,49 +13,69 @@ import * as bcrypt from 'bcryptjs';
   templateUrl: './agregar-alumno.component.html',
   styleUrl: './agregar-alumno.component.css'
 })
-export default class AgregarAlumnoComponent {
+export default class AgregarAlumnoComponent implements OnInit {
   formAlumno: FormGroup;
-
-  // Patrones de validación reutilizables
+  carreras: Carrera[] = [];
+  mensajeExito: string | null = null; // Para mostrar el mensaje
+  mensajeError: string | null = null; // Para errores
   private readonly PATRON_NOMBRE = /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+$/;
   private readonly PATRON_DNI = /^\d{8}$/;
   private readonly PATRON_TELEFONO = /^\+54\s?\d{4,5}[-\s]?\d{4,6}$/;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private usuariosService: UsuariosService
+  ) {
     this.formAlumno = this.fb.group({
       nombreUsuario: ['', [Validators.required, Validators.pattern(this.PATRON_NOMBRE)]],
       apellidoUsuario: ['', [Validators.required, Validators.pattern(this.PATRON_NOMBRE)]],
-      dniUsuario: ['', [Validators.required, Validators.pattern(this.PATRON_DNI)]], // DNI como string
+      dniUsuario: ['', [Validators.required, Validators.pattern(this.PATRON_DNI)]],
       domicilioUsuario: ['', Validators.required],
       telefonoUsuario: ['', [Validators.required, Validators.pattern(this.PATRON_TELEFONO)]],
-      emailUsuario: ['', [Validators.required, Validators.email]]
+      emailUsuario: ['', [Validators.required, Validators.email]],
+      idCarrera: ['', Validators.required]
     });
   }
 
-  // Verifica si un campo es inválido y ha sido tocado
+  ngOnInit() {
+    this.usuariosService.getCarreras().subscribe({
+      next: (data) => this.carreras = data,
+      error: (err) => console.error('Error al cargar carreras:', err)
+    });
+  }
+
   campoInvalido(campo: string): boolean {
     const control = this.formAlumno.get(campo);
     return control ? control.invalid && control.touched : false;
   }
 
-  // Función optimizada para encriptar la clave
-  private async encriptarClave(clave: string): Promise<string> {
-    return await bcrypt.hash(clave, 8); // Costo reducido a 8
-  }
-
-  // Registra al alumno
-  async registrarAlumno() {
+  registrarAlumno() { // Quitamos async porque ya no usamos await
     if (!this.formAlumno.valid) {
       console.log('Formulario inválido');
-      this.formAlumno.markAllAsTouched(); // Marca todos los campos para que muestren errores
+      this.formAlumno.markAllAsTouched();
       return;
     }
 
-    const datosAlumno = this.formAlumno.value;
-    datosAlumno.idRol = 1; // Asignación del id del rol alumno
-    datosAlumno.claveAcceso = await this.encriptarClave(datosAlumno.dniUsuario); // Encripta el DNI
+    const datosAlumno: Alumno = this.formAlumno.value;
+    datosAlumno.idRol = 1;//controlar que siempre quede en 1 que es el id del rol alumno
+    datosAlumno.claveAcceso = datosAlumno.dniUsuario; // Enviamos el DNI sin encriptar
 
     console.log('Datos del Alumno:', datosAlumno);
-    // Aquí puedes enviar los datos al backend
+
+    this.usuariosService.agregarUsuario(datosAlumno).subscribe({
+      next: (response) => {
+        console.log('Alumno registrado con éxito:', response);
+        this.mensajeExito = 'Alumno registrado con éxito';
+        this.mensajeError = null;
+        this.formAlumno.reset();
+        setTimeout(() => this.mensajeExito = null, 3000); // Desaparece en 3 segundos
+      },
+      error: (err) => {
+        console.error('Error al registrar alumno:', err);
+        this.mensajeError = 'Error al registrar el alumno';
+        this.mensajeExito = null;
+        setTimeout(() => this.mensajeError = null, 3000);
+      }
+    });
   }
 }

@@ -11,7 +11,7 @@
             <label>Nombre/s</label>
             <input type="text" class="form-control" formControlName="nombreUsuario" placeholder="Ingrese el/los nombres">
             <small class="text-danger" *ngIf="campoInvalido('nombreUsuario')">
-              Nombre es obligatorio y debe tener al menos 3 caracteres.
+              Nombre es obligatorio y solo letras.
             </small>
           </div>
 
@@ -19,7 +19,7 @@
             <label>Apellido/s</label>
             <input type="text" class="form-control" formControlName="apellidoUsuario" placeholder="Ingrese el/los apellidos">
             <small class="text-danger" *ngIf="campoInvalido('apellidoUsuario')">
-              Apellido es obligatorio y debe tener al menos 3 caracteres.
+              Apellido es obligatorio y solo letras.
             </small>
           </div>
 
@@ -57,10 +57,25 @@
               Ingrese un email válido.
             </small>
           </div>
+
+          <div class="form-group">
+            <label>Carrera</label>
+            <select class="form-control" formControlName="idCarrera">
+              <option value="">Seleccione una carrera</option>
+              <option *ngFor="let carrera of carreras" [value]="carrera.idCarrera">
+                {{ carrera.nombreCarrera }}
+              </option>
+            </select>
+            <small class="text-danger" *ngIf="campoInvalido('carreraId')">
+              Debe seleccionar una carrera.
+            </small>
+          </div>
         </div>
       </div>
 
       <div class="card-footer">
+        <div class="alert alert-success" *ngIf="mensajeExito">{{ mensajeExito }}</div>
+        <div class="alert alert-danger" *ngIf="mensajeError">{{ mensajeError }}</div>
         <button type="submit" class="btn btn-primary" [disabled]="formAlumno.invalid">
           Registrar Alumno
         </button>

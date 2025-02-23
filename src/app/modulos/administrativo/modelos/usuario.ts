@@ -1,12 +1,13 @@
+// src/app/modulos/administrativo/modelos/usuario.ts
 export class Alumno {
-    //modelo de datos que recibe desde el back
     idUsuario: number;
     nombreUsuario: string;
     apellidoUsuario: string;
-    dniUsuario: number;
+    dniUsuario: string; 
     domicilioUsuario: string;
-    telefonoUsuario: number;
+    telefonoUsuario: string; 
     emailUsuario: string;
     idRol: number;
     claveAcceso: string;
+    idCarrera?: number; 
 }
