@@ -3,6 +3,7 @@ import { Alumno } from '../../../../modelos/usuario';
 import { UsuariosService } from '../../../../services-administrativo/usuarios.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 
@@ -14,6 +15,7 @@ import { Router } from '@angular/router';
 
 })export default class ListarAlumnosComponent implements OnInit {
   alumnos: Alumno[] = [];
+  mensajeExito: string | null = null;
 
   constructor(
     private usuariosService: UsuariosService,
@@ -40,16 +42,27 @@ import { Router } from '@angular/router';
   }
 
   eliminarAlumno(id: number) {
-    if (confirm('¿Estás seguro de eliminar este alumno?')) {
-      this.usuariosService.eliminarAlumno(id).subscribe({
-        next: () => {
-          this.alumnos = this.alumnos.filter(alumno => alumno.idUsuario !== id);
-          console.log('Alumno eliminado con éxito');
-        },
-        error: (err) => {
-          console.error('Error al eliminar alumno:', err);
-        }
-      });
-    }
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'No podrás deshacer esta acción',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'No, cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.usuariosService.eliminarAlumno(id).subscribe({
+          next: () => {
+            this.alumnos = this.alumnos.filter(alumno => alumno.idUsuario !== id);
+            this.mensajeExito = 'Alumno eliminado con éxito';
+            setTimeout(() => this.mensajeExito = null, 10000); // Desaparece en 3 segundos
+          },
+          error: (err) => {
+            this.mensajeExito = 'Error al eliminar alumno';
+            console.error('Error al eliminar alumno:', err);
+          }
+        });
+      }
+    });
   }
 }

@@ -28,6 +28,16 @@ export class UsuariosService {
     return this.clienteHttp.get<Carrera[]>(`${this.urlBase}/carreras`);
   }
 
+  obtenerAlumnoPorId(id: number): Observable<Alumno> {
+    return this.clienteHttp.get<Alumno>(`${this.urlBase}/usuarios/${id}`);
+  }
+
+  actualizarAlumno(alumno: Alumno): Observable<Alumno> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+   
+    return this.clienteHttp.put<Alumno>(`${this.urlBase}/usuarios/${alumno.idUsuario}`, alumno, { headers });
+  }
+
   //metodo para eliminar usuarios con rol de alumno
   eliminarAlumno(id: number): Observable<void> {
     return this.clienteHttp.delete<void>(`${this.urlBase}/usuarios/${id}`);

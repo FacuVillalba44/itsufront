@@ -1,5 +1,6 @@
 <div class="container">
   <div class="card-body table-responsive p-0">
+    <div class="alert alert-success" *ngIf="mensajeExito">{{ mensajeExito }}</div>
     <table class="table table-hover table-bordered">
       <thead class="table-dark">
         <tr>
@@ -12,6 +13,7 @@
           <th scope="col" class="col-1">Acciones</th>
         </tr>
       </thead>
+      
       <tbody>
         <tr *ngFor="let alumno of alumnos">
           <td class="text-truncate">{{ alumno.nombreUsuario }}</td>
