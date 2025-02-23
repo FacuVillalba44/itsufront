@@ -1,38 +1,31 @@
-
-
-<div class="container ">
-    <div class="container text-center" >
-      
-
-    </div>
-    <div class="card-body table-responsive p-0">
-    <table class="table table-hover text-nowrap">
-        <thead class="table-dark">
-          <tr> <!--Titulos de la tabla-->
-            <th scope="col">Nombre</th>
-            <th scope="col">Apellido</th>
-            <th scope="col">N°DNI</th>
-            <th scope="col">Domicilio</th>
-            <th scope="col">Telefono</th>
-            <th scope="col">E-mail</th>
-            <th scope="col">id-rol</th>
-            
-           
-          </tr>
-        </thead>
-        <tbody>
-         <!--Genera de manera dinámica los datos de la tabla de alumnos-->
-          <tr *ngFor="let alumno of alumnos"> <!--renglon de registro-->
-            <td>{{alumno.nombreUsuario}}</td>
-            <td>{{alumno.apellidoUsuario}}</td>
-            <td>{{alumno.dniUsuario}}</td>
-            <td>{{alumno.domicilioUsuario}}</td>
-            <td>{{alumno.telefonoUsuario}}</td>
-            <td>{{alumno.emailUsuario}}</td>
-            <td>{{alumno.idRol}}</td>
-          </tr>
-          
-        </tbody>
-      </table>
-    </div>
-    </div>
+<div class="container">
+  <div class="card-body table-responsive p-0">
+    <table class="table table-hover table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col" class="col-2">Nombre</th>
+          <th scope="col" class="col-2">Apellido</th>
+          <th scope="col" class="col-1">N°DNI</th>
+          <th scope="col" class="col-2">Domicilio</th>
+          <th scope="col" class="col-2">Teléfono</th>
+          <th scope="col" class="col-2">E-mail</th>
+          <th scope="col" class="col-1">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let alumno of alumnos">
+          <td class="text-truncate">{{ alumno.nombreUsuario }}</td>
+          <td class="text-truncate">{{ alumno.apellidoUsuario }}</td>
+          <td class="text-truncate">{{ alumno.dniUsuario }}</td>
+          <td class="text-truncate">{{ alumno.domicilioUsuario }}</td>
+          <td class="text-truncate">{{ alumno.telefonoUsuario }}</td>
+          <td class="text-truncate">{{ alumno.emailUsuario }}</td>
+          <td>
+            <button class="btn btn-primary btn-sm" (click)="editarAlumno(alumno.idUsuario)">Editar</button>
+            <button class="btn btn-danger btn-sm ms-1" (click)="eliminarAlumno(alumno.idUsuario)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

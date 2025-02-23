@@ -14,7 +14,7 @@ export class UsuariosService {
 
   // Método para listar alumnos
   listarAlumnos(): Observable<Alumno[]> {
-    return this.clienteHttp.get<Alumno[]>(`${this.urlBase}/usuarios`);
+    return this.clienteHttp.get<Alumno[]>(`${this.urlBase}/alumnos`);
   }
 
   // Método para agregar un nuevo usuario (alumno)
@@ -26,5 +26,10 @@ export class UsuariosService {
   // Método para obtener las carreras
   getCarreras(): Observable<Carrera[]> {
     return this.clienteHttp.get<Carrera[]>(`${this.urlBase}/carreras`);
+  }
+
+  //metodo para eliminar usuarios con rol de alumno
+  eliminarAlumno(id: number): Observable<void> {
+    return this.clienteHttp.delete<void>(`${this.urlBase}/usuarios/${id}`);
   }
 }

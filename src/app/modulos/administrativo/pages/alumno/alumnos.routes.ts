@@ -11,7 +11,7 @@ export const ALUMNO_ROUTES: Routes = [
         children: [
             { path: 'listar', component: ListarAlumnosComponent },
             { path: 'agregar', component: AgregarAlumnoComponent },
-            { path: 'editar', component: EditarAlumnoComponent }
+            { path: 'editar/:id', component: EditarAlumnoComponent }
         ]
     },
 
