@@ -3,43 +3,45 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Alumno } from '../modelos/usuario';
 import { Carrera } from '../modelos/carrera';
+import { AuthService } from '../../../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuariosService {
-  private urlBase = "https://8080-idx-backenditsu-1740021031173.cluster-kc2r6y3mtba5mswcmol45orivs.cloudworkstations.dev/itsuapi";
+  private urlBase = 'https://8080-idx-backenditsu-1740021031173.cluster-kc2r6y3mtba5mswcmol45orivs.cloudworkstations.dev/itsuapi';
 
-  constructor(private clienteHttp: HttpClient) { }
+  constructor(private clienteHttp: HttpClient, private authService: AuthService) {}
 
-  // Método para listar alumnos
+  private getHeaders(): HttpHeaders {
+    const token = this.authService.getToken();
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token ? `Bearer ${token}` : ''
+    });
+  }
+
   listarAlumnos(): Observable<Alumno[]> {
-    return this.clienteHttp.get<Alumno[]>(`${this.urlBase}/alumnos`);
+    return this.clienteHttp.get<Alumno[]>(`${this.urlBase}/alumnos`, { headers: this.getHeaders() });
   }
 
-  // Método para agregar un nuevo usuario (alumno)
   agregarUsuario(nuevoAlumno: Alumno): Observable<Alumno> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.clienteHttp.post<Alumno>(`${this.urlBase}/usuarios`, nuevoAlumno, { headers });
+    return this.clienteHttp.post<Alumno>(`${this.urlBase}/usuarios`, nuevoAlumno, { headers: this.getHeaders() });
   }
 
-  // Método para obtener las carreras
   getCarreras(): Observable<Carrera[]> {
-    return this.clienteHttp.get<Carrera[]>(`${this.urlBase}/carreras`);
+    return this.clienteHttp.get<Carrera[]>(`${this.urlBase}/carreras`, { headers: this.getHeaders() });
+  }
+
+  eliminarAlumno(id: number): Observable<void> {
+    return this.clienteHttp.delete<void>(`${this.urlBase}/usuarios/${id}`, { headers: this.getHeaders() });
   }
 
   obtenerAlumnoPorId(id: number): Observable<Alumno> {
-    return this.clienteHttp.get<Alumno>(`${this.urlBase}/usuarios/${id}`);
+    return this.clienteHttp.get<Alumno>(`${this.urlBase}/usuarios/${id}`, { headers: this.getHeaders() });
   }
 
   actualizarAlumno(alumno: Alumno): Observable<Alumno> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-   
-    return this.clienteHttp.put<Alumno>(`${this.urlBase}/usuarios/${alumno.idUsuario}`, alumno, { headers });
-  }
-
-  //metodo para eliminar usuarios con rol de alumno
-  eliminarAlumno(id: number): Observable<void> {
-    return this.clienteHttp.delete<void>(`${this.urlBase}/usuarios/${id}`);
+    return this.clienteHttp.put<Alumno>(`${this.urlBase}/usuarios/${alumno.idUsuario}`, alumno, { headers: this.getHeaders() });
   }
 }
