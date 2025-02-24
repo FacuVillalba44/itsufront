@@ -118,4 +118,8 @@ export class EditarAlumnoComponent implements OnInit {
       }
     });
   }
+  cancelar() {
+    this.formAlumno.reset(); // Limpia el formulario
+    this.router.navigate(['/alumnos/listar']); // Vuelve a la lista
+  }
 }

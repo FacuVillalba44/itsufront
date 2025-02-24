@@ -16,6 +16,7 @@ import Swal from 'sweetalert2';
 })export default class ListarAlumnosComponent implements OnInit {
   alumnos: Alumno[] = [];
   mensajeExito: string | null = null;
+  mensajeError: string | null = null;
 
   constructor(
     private usuariosService: UsuariosService,
@@ -55,10 +56,13 @@ import Swal from 'sweetalert2';
           next: () => {
             this.alumnos = this.alumnos.filter(alumno => alumno.idUsuario !== id);
             this.mensajeExito = 'Alumno eliminado con éxito';
-            setTimeout(() => this.mensajeExito = null, 10000); // Desaparece en 3 segundos
+            this.mensajeError=null;
+            setTimeout(() => this.mensajeExito = null, 3000); // Desaparece en 3 segundos
           },
           error: (err) => {
-            this.mensajeExito = 'Error al eliminar alumno';
+            this.mensajeError = 'Error al eliminar alumno';
+            this.mensajeExito = null;
+            setTimeout(() => this.mensajeError = null, 3000);
             console.error('Error al eliminar alumno:', err);
           }
         });
