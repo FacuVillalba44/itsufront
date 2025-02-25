@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
-import { AuthGuard } from './guards/auth.guard'; // Cambia la ruta al nuevo guard
+import { AuthGuard } from './guards/auth.guard';
+import { RoleGuard } from './guards/role.guard';
 
 export const routes: Routes = [
   {
@@ -9,7 +10,17 @@ export const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () => import('./modulos/administrativo/admin.routes').then(m => m.ADMIN_ROUTES),
-    canActivate: [AuthGuard] // Usa el nuevo guard
+    canActivate: [AuthGuard, RoleGuard]
+  },
+  {
+    path: 'alumnos',
+    children: [
+      {
+        path: 'inicio',
+        loadComponent: () => import('./modulos/alumnos/inicio/inicio.component').then(m => m.InicioComponent),
+        canActivate: [AuthGuard, RoleGuard]
+      }
+    ]
   },
   {
     path: '',

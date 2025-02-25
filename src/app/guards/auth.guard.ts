@@ -9,10 +9,8 @@ export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(): boolean {
-    const token = this.authService.getToken();
-    console.log('Token en guard:', token); // Para depurar
     if (this.authService.isLoggedIn()) {
-      return true;
+      return true; // Deja pasar si hay token
     } else {
       this.router.navigate(['/login']);
       return false;
