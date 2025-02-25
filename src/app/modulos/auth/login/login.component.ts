@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit { // Implementa OnInit
           this.router.navigate(['/admin/alumnos/listar']);
         } else if (role === 1) {
           console.log('Redirigiendo a alumnos/inicio...');
-          this.router.navigate(['/alumnos/inicio']);
+          this.router.navigate(['/alumnos']);
         } else {
           this.errorMensaje = 'Rol no soportado';
         }

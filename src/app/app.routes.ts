@@ -14,13 +14,8 @@ export const routes: Routes = [
   },
   {
     path: 'alumnos',
-    children: [
-      {
-        path: 'inicio',
-        loadComponent: () => import('./modulos/alumnos/inicio/inicio.component').then(m => m.InicioComponent),
-        canActivate: [AuthGuard, RoleGuard]
-      }
-    ]
+    loadChildren: () => import('./modulos/alumnos/alumno.routes').then(m => m.ALUMNO_ROUTES),
+    canActivate: [AuthGuard, RoleGuard]
   },
   {
     path: '',

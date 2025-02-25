@@ -4,20 +4,19 @@ import { AuthService } from '../../../../services/auth.service'; // Ajusta la ru
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-sidebar',
-  imports: [RouterModule, RouterLink],
-  templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.css'
+  selector: 'app-sidebarAlumno',
+  imports: [RouterModule],
+  templateUrl: './sidebarAlumno.component.html',
+  styleUrl: './sidebarAlumno.component.css'
 })
-export class SidebarComponent {
-
+export class SidebarAlumnoComponent {
   constructor(
     private authService: AuthService, // Para cerrar sesión
     private router: Router // Para redirigir
   ) {}
-
   logout() {
     this.authService.logout(); // Borra el token
     this.router.navigate(['/login']); // Redirige a login
   }
+
 }
