@@ -13,8 +13,8 @@ export const routes: Routes = [
     canActivate: [AuthGuard, RoleGuard]
   },
   {
-    path: 'alumnos',
-    loadChildren: () => import('./modulos/alumnos/alumno.routes').then(m => m.ALUMNO_ROUTES),
+    path: 'estudiantes',
+    loadChildren: () => import('./modulos/estudiantes/estudiantes.routes').then(m => m.ESTUDIANTES_ROUTES),
     canActivate: [AuthGuard, RoleGuard]
   },
   {

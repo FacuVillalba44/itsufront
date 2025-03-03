@@ -17,7 +17,7 @@ export class RoleGuard implements CanActivate {
     if (role === 2) { // Directivo
       return true;
     } else if (role === 1) { // Alumno
-      if (currentPath.startsWith('/alumnos')) { // Verifica la URL completa
+      if (currentPath.startsWith('/estudiantes')) { // Verifica la URL completa
         return true;
       } else {
         this.router.navigate(['/login'], { queryParams: { message: 'Solo directivos pueden acceder aquí' } });

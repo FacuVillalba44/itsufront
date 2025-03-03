@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import ListarAlumnosComponent from './pagesAlumno/listar-alumnos/listar-alumnos.component';
 import AlumnoLayoutComponent from './alumno-layout/alumno-layout.component';
 import  AgregarAlumnoComponent  from './pagesAlumno/agregar-alumno/agregar-alumno.component';
-import { EditarAlumnoComponent } from './pagesAlumno/editar-alumno/editar-alumno.component';
+import  EditarAlumnoComponent  from './pagesAlumno/editar-alumno/editar-alumno.component';
 
 export const ALUMNO_ROUTES: Routes = [
 

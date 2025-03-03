@@ -42,12 +42,14 @@ export class LoginComponent implements OnInit { // Implementa OnInit
           this.router.navigate(['/admin/alumnos/listar']);
         } else if (role === 1) {
           console.log('Redirigiendo a alumnos/inicio...');
-          this.router.navigate(['/alumnos']);
+          this.router.navigate(['/estudiantes']);
         } else {
           this.errorMensaje = 'Rol no soportado';
         }
       },
       error: (err) => {
+        console.log(this.emailUsuario);
+        console.log(this.claveAcceso);
         this.errorMensaje = 'Email o contraseña incorrectos';
         console.error('Error al iniciar sesión:', err);
       }
