@@ -4,12 +4,14 @@ import { Observable } from 'rxjs';
 import { Alumno } from '../modelos/usuario';
 import { Carrera } from '../modelos/carrera';
 import { AuthService } from '../../../services/auth.service';
+import { environment } from '../../../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuariosService {
-  private urlBase = 'https://8080-idx-backenditsu-1740021031173.cluster-kc2r6y3mtba5mswcmol45orivs.cloudworkstations.dev/itsuapi';
+  private urlBase = environment.apiBaseUrl || 'https://8080-idx-backenditsu-1740021031173.cluster-kc2r6y3mtba5mswcmol45orivs.cloudworkstations.dev/itsuapi';
 
   constructor(private clienteHttp: HttpClient, private authService: AuthService) {}
 
