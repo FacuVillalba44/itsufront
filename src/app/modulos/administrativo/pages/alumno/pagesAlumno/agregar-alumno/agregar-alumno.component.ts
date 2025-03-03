@@ -33,7 +33,8 @@ export default class AgregarAlumnoComponent implements OnInit {
       domicilioUsuario: ['', Validators.required],
       telefonoUsuario: ['', [Validators.required, Validators.pattern(this.PATRON_TELEFONO)]],
       emailUsuario: ['', [Validators.required, Validators.email]],
-      idCarrera: ['', Validators.required]
+      idCarrera: ['', Validators.required],
+      fechaInscripcion: ['', Validators.required]
     });
   }
 
