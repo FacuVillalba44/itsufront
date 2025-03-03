@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UsuariosService } from '../../../../services-administrativo/usuarios.service';
@@ -10,11 +10,11 @@ import { Carrera } from '../../../../modelos/carrera';
 @Component({
   selector: 'app-editar-alumno',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './editar-alumno.component.html',
   styleUrls: ['./editar-alumno.component.css']
 })
-export class EditarAlumnoComponent implements OnInit {
+export default class EditarAlumnoComponent implements OnInit {
   formAlumno: FormGroup;
   alumnoId: number;
   carreras: Carrera[] = [];
@@ -107,7 +107,7 @@ export class EditarAlumnoComponent implements OnInit {
         this.mensajeError = null;
         setTimeout(() => {
           this.mensajeExito = null;
-          this.router.navigate(['/alumnos/listar']);
+          this.router.navigate(['admin/alumnos/listar']);
         }, 2000);
       },
       error: (err) => {
@@ -120,6 +120,7 @@ export class EditarAlumnoComponent implements OnInit {
   }
   cancelar() {
     this.formAlumno.reset(); // Limpia el formulario
-    this.router.navigate(['/alumnos/listar']); // Vuelve a la lista
+    this.router.navigate(['admin/alumnos/listar']); 
+    console.log('Redirigiendo a /admin/alumnos/listar');// Vuelve a la lista
   }
 }

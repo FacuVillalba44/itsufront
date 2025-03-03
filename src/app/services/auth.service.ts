@@ -9,7 +9,7 @@ import {jwtDecode} from 'jwt-decode';
 })
 export class AuthService {
   private urlBase = 'https://8080-idx-backenditsu-1740021031173.cluster-kc2r6y3mtba5mswcmol45orivs.cloudworkstations.dev/itsuapi';
-  private tokenKey = 'auth_token';
+  private tokenKey = 'auth_token';// 
 
   constructor(private http: HttpClient) {}
 
@@ -33,7 +33,7 @@ export class AuthService {
   isLoggedIn(): boolean {
     return !!this.getToken(); // Devuelve true si hay token
   }
-  getRole(): number | null {
+  getRole(): number | null {//del token que viene del backend busca la id del rol
     const token = this.getToken();
     if (token) {
       try {

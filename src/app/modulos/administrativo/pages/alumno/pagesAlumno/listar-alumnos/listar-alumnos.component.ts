@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Alumno } from '../../../../modelos/usuario';
 import { UsuariosService } from '../../../../services-administrativo/usuarios.service';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import Swal from 'sweetalert2';
 
 
 
 @Component({
   selector: 'app-listar-alumnos',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './listar-alumnos.component.html',
   styleUrls: ['./listar-alumnos.component.css']
 
@@ -39,7 +39,7 @@ import Swal from 'sweetalert2';
   }
 
   editarAlumno(id: number) {
-    this.router.navigate(['/alumnos/editar', id]);//ruta para que enviar el id del alumno a editar
+    this.router.navigate(['admin/alumnos/editar', id]);//ruta para que enviar el id del alumno a editar
   }
 
   eliminarAlumno(id: number) {
@@ -62,7 +62,7 @@ import Swal from 'sweetalert2';
           error: (err) => {
             this.mensajeError = 'Error al eliminar alumno';
             this.mensajeExito = null;
-            setTimeout(() => this.mensajeError = null, 3000);
+            setTimeout(() => this.mensajeError = null, 10000);
             console.error('Error al eliminar alumno:', err);
           }
         });
