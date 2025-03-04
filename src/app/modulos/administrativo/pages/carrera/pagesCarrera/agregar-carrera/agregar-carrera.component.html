@@ -1,21 +1,49 @@
-<section class="content">
-    <div class="box-body mt-4">
-        <div class="box-header ml-3 mr-3">
-            <form action="" method="post">
-                <div class="form-group">
-                    <label for="carrera">Nombre de la carrera</label>
-                    <input type="text" id="carrera" name="carrera" class="form-control" placeholder="Agregar nombre">
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="resolucion-carrera">Resolución de la carrera</label>
-                    <input type="text" id="resolucion-carrera" name="resolucion-carrera" class="form-control" placeholder="Agregar resolución">
-                </div>
-                <br>
-                <button type="submit" class="btn btn-primary" style="background-color: #951F32; color: white; border-color: #951F32;">Crear
-                    Carrera</button>
-            </form>
-
+<div class="card card-primary">
+  <div class="card-header">
+    <h3 class="card-title">Registro de Alumno</h3>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="formCarrera" (ngSubmit)="registrarCarrera()">
+      <div class="row">
+        <div class="form-group">
+          <label>Nombre de la carrera</label>
+          <input type="text" class="form-control" formControlName="nombreUsuario" placeholder="Ingrese el/los nombres">
+          <small class="text-danger" *ngIf="campoInvalido('nombreUsuario')">
+            Nombre es obligatorio y solo letras.
+          </small>
         </div>
-    </div>
-</section>
+
+
+        <div class="form-group mb-3">
+          <label>Fecha de Inicio de dictado </label>
+          <input type="date" class="form-control" formControlName="fechaInscripcion"> <!-- Añadido -->
+        </div>
+
+        <div class="form-group">
+          <label>Carrera</label>
+          <select class="form-control" formControlName="idCarrera">
+            <option value="">Seleccione el plan de estudio al que pertenece</option>
+            <option *ngFor="let carrera of carreras" [value]="carrera.idCarrera">
+              {{ carrera.nombreCarrera }}
+            </option>
+          </select>
+          <small class="text-danger" *ngIf="campoInvalido('carreraId')">
+            Debe seleccionar un plan de estudio.
+          </small>
+        </div>
+
+
+
+      </div><!--cierre de la etiqueta row-->
+
+      <div class="card-footer">
+        <div class="alert alert-success" *ngIf="mensajeExito">{{ mensajeExito }}</div>
+        <div class="alert alert-danger" *ngIf="mensajeError">{{ mensajeError }}</div>
+        <button type="submit" class="btn btn-primary" [disabled]="formCarrera.invalid">
+          Registrar Alumno
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
