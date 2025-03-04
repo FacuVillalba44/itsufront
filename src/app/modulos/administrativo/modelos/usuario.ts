@@ -10,4 +10,5 @@ export class Alumno {
     idRol: number;
     claveAcceso: string;
     idCarrera?: number; 
+    fechaInscripcion?:string;
 }
