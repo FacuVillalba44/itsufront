@@ -11,7 +11,7 @@ import { environment } from '../../../../environments/environment';
   providedIn: 'root'
 })
 export class UsuariosService {
-  private urlBase = environment.apiBaseUrl || 'https://8080-idx-backenditsu-1740021031173.cluster-kc2r6y3mtba5mswcmol45orivs.cloudworkstations.dev/itsuapi';
+  private urlBase = environment.apiBaseUrl;
 
   constructor(private clienteHttp: HttpClient, private authService: AuthService) {}
 
