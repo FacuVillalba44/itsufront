@@ -17,6 +17,18 @@ export const ADMIN_ROUTES: Routes = [
             {
                 path: 'materia',
                 loadChildren: () => import('./pages/materia/materia.routes').then(m => m.MATERIA_ROUTES)
+            },
+            {
+                path: 'planDeEstudio',
+                loadChildren: () => import('./pages/planDeEstudio/planDeEstudio.routes').then(m => m.PLANES_ROUTES)
+            },
+            {
+                path: 'calendario',
+                loadChildren: () => import('./pages/calendarioAcademico/calendario.routes').then(m => m.CALENDARIO_ROUTES)
+            },
+            {
+                path: 'actas',
+                loadChildren: () => import('./pages/actas/actas.routes').then(m => m.ACTAS_ROUTES)
             }
        ]
     }
