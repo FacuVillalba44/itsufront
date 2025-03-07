@@ -1,1 +1,47 @@
-<p>agregar-materia works!</p>
+
+<!-- app/modulos/administrativo/pages/materia/pagesMateria/agregar-materia/agregar-materia.component.html -->
+<div class="container">
+    <h2>Agregar Materia</h2>
+  
+    <!-- Indicador de carga -->
+    <div *ngIf="loading" class="loading">
+      <p>Cargando...</p>
+    </div>
+  
+    <!-- Mensaje de error -->
+    <div *ngIf="error && !loading" class="error">
+      <p>{{ error }}</p>
+    </div>
+  
+    <!-- Formulario -->
+    <div *ngIf="!loading" class="form-container">
+      <div class="form-group">
+        <label for="carrera">Carrera:</label>
+        <select id="carrera" [(ngModel)]="selectedCarreraId" (change)="onCarreraChange()">
+          <option [value]="null" disabled>Selecciona una carrera</option>
+          <option *ngFor="let carrera of carreras" [value]="carrera.idCarrera">
+            {{ carrera.nombre }}
+          </option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="nombre">Nombre de la Materia:</label>
+        <input id="nombre" type="text" [(ngModel)]="nuevaMateria.nombre" placeholder="Ingrese el nombre">
+      </div>
+  
+      <div class="form-group">
+        <label for="numero">Número de Materia:</label>
+        <input id="numero" type="number" [(ngModel)]="nuevaMateria.numeroDeMateria" min="1" placeholder="Ej. 101">
+      </div>
+  
+      <div class="form-group">
+        <label for="ciclo">Ciclo:</label>
+        <input id="ciclo" type="number" [(ngModel)]="nuevaMateria.ciclo" min="1" max="5" placeholder="Ej. 1">
+      </div>
+  
+      <button (click)="agregarMateria()" [disabled]="!selectedCarreraId || !nuevaMateria.nombre || !nuevaMateria.numeroDeMateria">
+        Agregar Materia
+      </button>
+    </div>
+  </div>
