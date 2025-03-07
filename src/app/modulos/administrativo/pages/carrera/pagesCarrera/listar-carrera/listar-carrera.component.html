@@ -1,1 +1,38 @@
-<p>listar-carrera works!</p>
+<div class="container">
+  <h5>Listado de Carreras</h5>
+
+  <!-- Indicador de carga -->
+  <div *ngIf="loading" class="loading">
+    <p>Cargando carreras...</p>
+  </div>
+
+  <!-- Mensaje de error -->
+  <div *ngIf="error && !loading" class="error">
+    <p>{{ error }}</p>
+  </div>
+
+  <!-- Tabla de carreras -->
+  <div *ngIf="!loading && !error" class="table-container">
+    <table class="carrera-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Resolución</th>
+          <th>Inicio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let carrera of carreras">
+          <td>{{ carrera.idCarrera }}</td>
+          <td>{{ carrera.nombreCarrera }}</td>
+          <td>{{ carrera.idPlanDeEstudio || 'Sin descripción' }}</td>
+          <td>{{ carrera.inicioDeDictado || 'N/A' }}</td>
+        </tr>
+        <tr *ngIf="carreras.length === 0">
+          <td colspan="4">No hay carreras disponibles.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

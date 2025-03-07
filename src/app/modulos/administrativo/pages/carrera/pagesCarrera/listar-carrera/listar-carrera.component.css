@@ -1,0 +1,48 @@
+.container {
+  padding: 20px;
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+}
+
+.error {
+  text-align: center;
+  color: red;
+  font-weight: bold;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.carrera-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.carrera-table th,
+.carrera-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.carrera-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.carrera-table tr:hover {
+  background-color: #f9f9f9;
+}
