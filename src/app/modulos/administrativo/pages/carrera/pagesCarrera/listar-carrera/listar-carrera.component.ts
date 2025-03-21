@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Importamos CommonModule
 
-import { Carrera } from '../../../../modelos/carrera';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -11,12 +10,6 @@ import { RouterModule } from '@angular/router';
   templateUrl: './listar-carrera.component.html',
   styleUrls: ['./listar-carrera.component.css']
 })
-export default class ListarCarreraComponent  {
-  carreras: Carrera[] = [];
-  loading: boolean = true;
-  error: string | null = null;
-
- 
-
+export default class ListarCarreraComponent {
 
 }
