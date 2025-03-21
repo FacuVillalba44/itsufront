@@ -42,3 +42,4 @@ testem.log
 Thumbs.db
 # Project Idx
 .idx/
+src/environments/environment.ts
