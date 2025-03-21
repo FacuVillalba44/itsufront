@@ -16,18 +16,18 @@
 
         <div class="form-group mb-3">
           <label>Fecha de Inicio de dictado </label>
-          <input type="date" class="form-control" formControlName="fechaInicio"> <!-- Añadido -->
+          <input type="date" class="form-control" formControlName="inicioDeDictado"> <!-- Añadido -->
         </div>
 
         <div class="form-group">
-          <label>Carrera</label>
-          <select class="form-control" formControlName="idCarrera">
+          <label>Plan de estudio</label>
+          <select class="form-control" formControlName="idPlanDeEstudio">
             <option value="">Seleccione el plan de estudio al que pertenece</option>
-            <option *ngFor="let carrera of carreras" [value]="carrera.idCarrera">
-              {{ carrera.nombreCarrera }}
+            <option *ngFor="let plan of planesDeEstudio" [value]="plan.idPlanDeEstudio">
+              {{ plan.nombre }}
             </option>
           </select>
-          <small class="text-danger" *ngIf="campoInvalido('carreraId')">
+          <small class="text-danger" *ngIf="campoInvalido('idPlanDeEstudio')">
             Debe seleccionar un plan de estudio.
           </small>
         </div>

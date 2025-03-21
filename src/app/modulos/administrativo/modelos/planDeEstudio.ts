@@ -1,4 +1,4 @@
-export class planDeEstudio {
+export class PlanDeEstudio {
     idPlanDeEstudio: Number;
     codigoResolucion: String;
     nombre: String;

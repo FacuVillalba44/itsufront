@@ -26,7 +26,7 @@
         <tr *ngFor="let carrera of carreras">
           <td>{{ carrera.idCarrera }}</td>
           <td>{{ carrera.nombreCarrera }}</td>
-          <td>{{ carrera.idPlanDeEstudio || 'Sin descripción' }}</td>
+          <td>{{ carrera.planDeEstudio.idPlanDeEstudio|| 'Sin descripción' }}</td>
           <td>{{ carrera.inicioDeDictado || 'N/A' }}</td>
         </tr>
         <tr *ngIf="carreras.length === 0">

@@ -1,6 +1,6 @@
 export class Carrera {
-  idCarrera: number;
+  idCarrera?: number;
   nombreCarrera: string;
-  idPlanDeEstudio: number;
   inicioDeDictado: string;
+  planDeEstudio: { idPlanDeEstudio: number };  // Cambiar idPlanDeEstudio por planDeEstudio
 }
